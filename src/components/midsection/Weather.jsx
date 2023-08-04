@@ -5,35 +5,35 @@ import Typography from '@mui/material/Typography';
 import NearMeIcon from '@mui/icons-material/NearMe';
 const WeatherCard = ({ wind, visibility, airPressure, humidity }) => {
 
-    //guage regilates wether meter has guage or not
 
-    wind = true
-    visibility = true
-    airPressure = true
-    humidity = false;
+    // set <Card wind={true}/> to choose type of card
+    // wind = true
+    // visibility = true
+    // airPressure = true
+    // humidity = false;
     let text = 'Air pressure'
     let unit = ''
 
     if (humidity) {
         text = 'Humidity'
         unit = '%'
-        visibility=airPressure=wind=false
+        visibility = airPressure = wind = false
 
     }
     else if (airPressure) {
         text = 'Air pressure'
         unit = 'mb'
-        visibility=wind=humidity=false
+        visibility = wind = humidity = false
     }
     else if (visibility) {
         text = 'Visibility'
         unit = 'miles'
-        wind=airPressure=humidity=false
+        wind = airPressure = humidity = false
     }
     else {
         text = 'Wind status'
         unit = 'mph'
-        visibility=airPressure=humidity=false
+        visibility = airPressure = humidity = false
     }
     return (
         <div>
@@ -52,7 +52,7 @@ const WeatherCard = ({ wind, visibility, airPressure, humidity }) => {
 
                     <>
                         {
-                           wind && <Typography sx={{ mb: 1.5, display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+                            wind && <Typography sx={{ mb: 1.5, display: 'flex', gap: '1rem', justifyContent: 'center' }}>
                                 <span className='direction'><NearMeIcon /></span><span> wsw</span>
                             </Typography>
                         }

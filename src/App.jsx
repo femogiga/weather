@@ -7,8 +7,11 @@ import Location from './components/Location'
 import SearchButton from './components/SearchButton'
 import Temp from './components/Temp'
 import TopSection from './components/TopSection'
+import MidArticle from './components/midsection/MidArticle'
 import MidSection from './components/midsection/MidSection'
-import Weather from './components/midsection/Weather'
+import SectionHeader from './components/midsection/SectionHeader'
+import StatCard from './components/midsection/StatCard'
+import WeatherCard from './components/midsection/WeatherCard'
 import Card from './components/midsection/WeatherCard'
 
 function App() {
@@ -25,10 +28,19 @@ function App() {
       </TopSection>
 
       <MidSection>
-        {/* <Card />
-        <Card /> */}
-        <Weather/>
+        <MidArticle>
+          <StatCard />
+          <StatCard />
+          <StatCard />
+          <StatCard />
+          <StatCard />
+        </MidArticle>
 
+        <SectionHeader text={"Today's Hightlights"} />
+        <WeatherCard />
+        <WeatherCard visibility={true} />
+        <WeatherCard humidity={true} />
+        <WeatherCard airPressure={true} />
       </MidSection>
 
     </div>
