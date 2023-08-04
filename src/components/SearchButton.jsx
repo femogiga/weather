@@ -8,7 +8,7 @@ import MyLocationIcon from '@mui/icons-material/MyLocation';
 
 const SearchButton = () => {
     return (
-        <div className='search-button flex flow-4'>
+        <div className='search-button flex flow-4' style={{padding:'1rem'}}>
             <Button style={{ textTransform: 'none', backgroundColor: '#6E707A' }} variant="contained">Search for places</Button>
 
             <IconButton style={{ backgroundColor: '#6E707A', color: 'white' }}>

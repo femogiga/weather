@@ -7,6 +7,9 @@ import Location from './components/Location'
 import SearchButton from './components/SearchButton'
 import Temp from './components/Temp'
 import TopSection from './components/TopSection'
+import MidSection from './components/midsection/MidSection'
+import Weather from './components/midsection/Weather'
+import Card from './components/midsection/WeatherCard'
 
 function App() {
 
@@ -20,6 +23,13 @@ function App() {
         <FullDate />
         <Location />
       </TopSection>
+
+      <MidSection>
+        {/* <Card />
+        <Card /> */}
+        <Weather/>
+
+      </MidSection>
 
     </div>
   )

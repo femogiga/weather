@@ -3,6 +3,8 @@
   --fs-md: 1rem;
   --fs-lg: 2rem;
   --mid-blue: #1E213A;
+  --dark-blue: #100E1D;
+
 
 }
 
@@ -32,6 +34,12 @@ body {
 
 img {
   max-width: 100%
+}
+
+meter{
+  display:block;
+  width:80%
+
 }
 
 /***********************************************utility classes*************************************************************** */
@@ -77,6 +85,9 @@ img {
 .flex-col {
   flex-direction: column;
 }
+.flex-align-center{
+  align-items: center;
+}
 
 /* **************************************************************************************************************** */
 
@@ -91,22 +102,48 @@ img {
 }
 
 .top-section {
+  max-width: 28.688rem;
   display: flex;
   flex-direction: column;
   background: var(--mid-blue);
   position: relative;
-  padding-bottom: 4rem;
+  padding-bottom: 5rem;
 
 }
+
+
 
 .top-section::before {
   content: "";
   position: absolute;
   background-image: url(./photos/Cloud-background.png );
+  background-size: 30rem;
   top: 0;
   right: 0;
   left: 0;
   bottom: 0;
-  opacity: .05;
+  opacity: .03;
 
+}
+
+
+
+/***************************** mid-section****************************************************** */
+
+.mid-section{
+  padding:3rem 0;
+  background-color: var(--dark-blue);
+  max-width: 28.688rem;
+  display:flex;
+  flex-direction:column;
+  gap:2rem;
+  align-items: center;
+}
+.stat{
+  font-size:4rem;
+}
+
+.percent{
+  font-size: .75rem;
+  gap:5rem;
 }
