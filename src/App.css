@@ -1,0 +1,112 @@
+:root {
+  --fs-sm: .75rem;
+  --fs-md: 1rem;
+  --fs-lg: 2rem;
+  --mid-blue: #1E213A;
+
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: .4rem;
+
+}
+
+
+.app {
+  /* background-color: rgb(195, 216, 216); */
+}
+
+body {
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%
+}
+
+/***********************************************utility classes*************************************************************** */
+.flow-05 {
+  margin-block-end: 0.5rem;
+}
+
+
+.flow-1 {
+  margin-block-end: 1rem;
+}
+
+
+.flow-2 {
+  margin-block-end: 2rem;
+}
+
+
+
+.flow-3 {
+  margin-block-end: 3rem;
+}
+
+
+.flow-4 {
+  margin-block-end: 4rem;
+}
+
+
+.flex {
+  display: flex;
+}
+
+.flex-just-cen {
+  justify-content: center;
+
+}
+
+.gap {
+  gap: var(--gap, .4rem)
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+/* **************************************************************************************************************** */
+
+
+
+.search-button {
+  justify-content: space-between;
+}
+
+.loc-icon {
+  border-radius: px;
+}
+
+.top-section {
+  display: flex;
+  flex-direction: column;
+  background: var(--mid-blue);
+  position: relative;
+  padding-bottom: 4rem;
+
+}
+
+.top-section::before {
+  content: "";
+  position: absolute;
+  background-image: url(./photos/Cloud-background.png );
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  opacity: .05;
+
+}
