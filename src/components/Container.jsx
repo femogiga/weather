@@ -22,7 +22,7 @@ import { unitConverter } from "../utility/unitConverter"
 const Container = () => {
     const [data, setData] = useState([])
     const [unit, setUnit] = ('C')
-    const [city, setCity] = useState('London')
+    const [city, setCity] = useState('Luton')
 
     const [currentTemp, setCurrentTemp] = useState(0)
     const [minTemp, setMinTemp] = useState(0)
@@ -31,20 +31,25 @@ const Container = () => {
     const [pressureData, setPressureData] = useState(0)
     const [visibData, setVisibData] = useState(0)
     const [windData, setWindData] = useState(0)
-    const[condition,setCondition]=useState('')
+    const [condition, setCondition] = useState('')
+    const [forecast, setForecast] = useState([])
+    const [longitude, setLongitude] = useState()
+    const [latitude, setLatitude] = useState()
 
 
 
 
 
     useEffect(() => {
-        /////
+        ////
         //id = cityid
         const api_key = '1aaf6c74c2a6dee53be44e2f12b30ea7'
         // const city = 'Moscow'
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}`)
-            .then(res => res.json() )
-            .then(res =>{
+            .then(res => res.json())
+            .then(res => {
+                const latitude = res.coord.lat
+                const longitude = res.coord.l
                 setData(res)
                 const loc = res?.main
                 setCurrentTemp(unitConverter(loc?.temp, unit))
@@ -53,30 +58,47 @@ const Container = () => {
                 setHumidData(loc?.humidity)
                 setPressureData(loc?.pressure)
                 setVisibData(res?.visibility)
-                setWindData( res?.wind?.speed.toFixed(0))
+                setWindData(res?.wind?.speed.toFixed(0))
                 setCondition(res?.weather[0]?.description)
+                setLongitude(res?.coord?.lon)
+                setLatitude(res?.coord?.lat)
+                console.log('daily', res?.daily)
             })
             .then(res => console.log(data))
             .catch(error => console.error(error))
 
 
+        // const city = 'Moscow'
+        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly,alerts&appid=${api_key}`)
+            .then(res => res.json())
+            .then(res => {
+                setForecast(res.daily)
+
+            })
+            .then(res => console.log('forecast', forecast))
+            .catch(error => console.error(error))
 
 
+    }, [city, unit, longitude, latitude])
 
 
+    // useEffect(() => {
+    //     ///
+    //     //id = cityid
+    //     const api_key = '1aaf6c74c2a6dee53be44e2f12b30ea7'
 
+    //     // const city = 'Moscow'
+    //     fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly,alerts&appid=${api_key}`)
+    //         .then(res => res.json() )
+    //         .then(res =>{
+    //             setForecast(res.daily)
 
+    //         })
+    //         .then(res => console.log('forecast',forecast))
+    //         .catch(error => console.error(error))
 
-    }, [city, unit])
-    ////console.log(data.main)
-    // const loc = { ...data.main }
-    // const currentTemp = unitConverter(loc.temp, unit)
-    // const minTemp = unitConverter(loc.temp_min, unit)
-    // const maxTemp = unitConverter(loc.max_temp, unit)
-    // const humidData = loc.humidity
-    // const pressureData = loc.pressure
-    // const visibData = data.visibility
-    // const windData = data?.wind?.speed.toFixed(0)
+    // }, [city,longitude,latitude])
+
     return (
         <div>
             <TopSection>
@@ -84,18 +106,18 @@ const Container = () => {
                 <Avatar />
                 <Temp temp={currentTemp} unit={unit} />
                 <Conditions condition={condition} />
-                <FullDate />
-                <Location />
+                <FullDate dt={data.dt} />
+                <Location city={city} />
             </TopSection>
 
 
             <MidSection>
                 <MidArticle >
-                    <StatCard />
-                    <StatCard />
-                    <StatCard />
-                    <StatCard />
-                    <StatCard />
+                    {
+
+                        forecast && forecast.map((day, index) => (<StatCard key={index} low={unitConverter(day?.temp?.min, unit)} high={unitConverter(day?.temp?.max, unit)} unit={unit} dt={day?.dt} />))
+                    }
+
                 </MidArticle >
 
                 <SectionHeader text={"Today's Hightlights"} />

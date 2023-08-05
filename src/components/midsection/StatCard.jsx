@@ -11,23 +11,24 @@ import lightRain from '../../photos/LightRain.png';
 import shower from '../../photos/Shower.png';
 import sleet from '../../photos/Sleet.png';
 import snow from '../../photos/Snow.png';
+import { dateConverter } from '../../utility/unitConverter';
 
 
-const StatCard = (date) => {
-    date = 'Tomorrow'
+const StatCard = ({ date, low, high, unit, dt }) => {
+    // date = dateConverter(dt)
     return (
         <div>
             <Card sx={{ minWidth: 110, maxWidth: 100, textAlign: 'center', color: 'white', backgroundColor: '#1E213A', padding: '0 rem' }}>
                 <CardContent>
-                    <Typography sx={{ fontSize: '1rem' }} gutterBottom>
-                        {date}
+                    <Typography sx={{ fontSize: '.8rem' }} gutterBottom>
+                        {dateConverter(dt)}
                     </Typography>
                     <div className='flow-05'>
                         <img src={heavyRain} alt="weather icon" />
                     </div>
                     <div className='flex gap-1 flex-just-cent' style={{ fontSize: '.75rem' }}>
-                        <span>16°C</span>
-                        <span>16°C</span>
+                        <span>{high} °{unit}</span>
+                        <span>{low} °{unit}</span>
                     </div>
                 </CardContent>
             </Card>

@@ -1,7 +1,7 @@
 import PlaceIcon from '@mui/icons-material/Place';
 
-const Location = ({location})=>{
-    location = 'Helsinki'
+const Location = ({city})=>{
+    // location = 'Helsinki'
     const locStyle = {
 
         fontWeight: 'bolder',
@@ -9,7 +9,7 @@ const Location = ({location})=>{
     }
     return(
         <div style={locStyle}>
-            <p className='flex flex-just-cen gap'><span><PlaceIcon/></span><span>{location}</span></p>
+            <p className='flex flex-just-cen gap'><span><PlaceIcon/></span><span>{city}</span></p>
         </div>
     )
 
