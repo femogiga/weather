@@ -2,6 +2,7 @@
 import './App.css'
 import Avatar from './components/Avatar'
 import Conditions from './components/Conditions'
+import Container from './components/Container'
 import FullDate from './components/FullDate'
 import Location from './components/Location'
 import SearchButton from './components/SearchButton'
@@ -18,7 +19,7 @@ function App() {
 
   return (
     <div className='app'>
-      <TopSection>
+      {/* <TopSection>
         <SearchButton />
         <Avatar />
         <Temp />
@@ -41,7 +42,8 @@ function App() {
         <WeatherCard visibility={true} />
         <WeatherCard humidity={true} />
         <WeatherCard airPressure={true} />
-      </MidSection>
+      </MidSection> */}
+      <Container/>
 
     </div>
   )

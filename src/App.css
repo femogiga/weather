@@ -26,6 +26,7 @@
 
 .app {
   /* background-color: rgb(195, 216, 216); */
+
 }
 
 body {
@@ -36,10 +37,9 @@ img {
   max-width: 100%
 }
 
-meter{
-  display:block;
-  width:80%
-
+meter {
+  display: block;
+  width: 80%
 }
 
 /***********************************************utility classes*************************************************************** */
@@ -78,7 +78,7 @@ meter{
 
 }
 
-.wrap{
+.wrap {
   flex-wrap: wrap;
 }
 
@@ -86,14 +86,15 @@ meter{
   gap: var(--gap, .4rem)
 }
 
-.gap-1{
-  gap: var(--gap,1rem)
+.gap-1 {
+  gap: var(--gap, 1rem)
 }
 
 .flex-col {
   flex-direction: column;
 }
-.flex-align-center{
+
+.flex-align-center {
   align-items: center;
 }
 
@@ -138,26 +139,28 @@ meter{
 
 /***************************** mid-section****************************************************** */
 
-.mid-section{
-  padding:3rem 0;
+.mid-section {
+  padding: 3rem 0;
   background-color: var(--dark-blue);
   max-width: 28.688rem;
-  display:flex;
-  flex-direction:column;
-  gap:2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   align-items: center;
-}
-.stat{
-  font-size:4rem;
+  padding-block-end: 7rem;
 }
 
-.percent{
+.stat {
+  font-size: 4rem;
+}
+
+.percent {
   font-size: .75rem;
-  gap:5rem;
+  gap: 5rem;
 }
 
-.mid-article{
-  padding-inline:3rem;
+.mid-article {
+  padding-inline: 3rem;
   justify-content: space-between;
-  
+
 }
