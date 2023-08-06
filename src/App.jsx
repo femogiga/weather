@@ -10,6 +10,7 @@ import Temp from './components/Temp'
 import TopSection from './components/TopSection'
 import MidArticle from './components/midsection/MidArticle'
 import MidSection from './components/midsection/MidSection'
+import Search from './components/midsection/Search'
 import SectionHeader from './components/midsection/SectionHeader'
 import StatCard from './components/midsection/StatCard'
 import WeatherCard from './components/midsection/WeatherCard'
@@ -19,6 +20,7 @@ function App() {
 
   return (
     <div className='app'>
+     
       {/* <TopSection>
         <SearchButton />
         <Avatar />

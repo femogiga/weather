@@ -12,6 +12,7 @@ import SectionHeader from "./midsection/SectionHeader"
 import StatCard from "./midsection/StatCard"
 import WeatherCard from "./midsection/WeatherCard"
 import { unitConverter } from "../utility/unitConverter"
+import Search from "./midsection/Search"
 
 
 //set True on any of the WeatherCards component props to select
@@ -21,8 +22,8 @@ import { unitConverter } from "../utility/unitConverter"
 
 const Container = () => {
     const [data, setData] = useState([])
-    const [unit, setUnit] = ('C')
-    const [city, setCity] = useState('Luton')
+    const [unit, setUnit] = useState('C')
+    const [city, setCity] = useState('Paris')
 
     const [currentTemp, setCurrentTemp] = useState(0)
     const [minTemp, setMinTemp] = useState(0)
@@ -31,25 +32,24 @@ const Container = () => {
     const [pressureData, setPressureData] = useState(0)
     const [visibData, setVisibData] = useState(0)
     const [windData, setWindData] = useState(0)
+    const [windDirection, setWindDirection] = useState(0)
     const [condition, setCondition] = useState('')
     const [forecast, setForecast] = useState([])
-    const [longitude, setLongitude] = useState()
-    const [latitude, setLatitude] = useState()
+    const [longitude, setLongitude] = useState(51.8797)
+    const [latitude, setLatitude] = useState(-0.4175)
 
 
 
 
 
     useEffect(() => {
-        ////
-        //id = cityid
+
         const api_key = '1aaf6c74c2a6dee53be44e2f12b30ea7'
-        // const city = 'Moscow'
+
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}`)
             .then(res => res.json())
             .then(res => {
-                const latitude = res.coord.lat
-                const longitude = res.coord.l
+
                 setData(res)
                 const loc = res?.main
                 setCurrentTemp(unitConverter(loc?.temp, unit))
@@ -59,14 +59,34 @@ const Container = () => {
                 setPressureData(loc?.pressure)
                 setVisibData(res?.visibility)
                 setWindData(res?.wind?.speed.toFixed(0))
+                setWindDirection(res.wind.deg)
                 setCondition(res?.weather[0]?.description)
                 setLongitude(res?.coord?.lon)
-                setLatitude(res?.coord?.lat)
-                console.log('daily', res?.daily)
+                setLatitude((res?.coord?.lat))
+
             })
             .then(res => console.log(data))
             .catch(error => console.error(error))
 
+
+        // const city = 'Moscow'
+        // fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly,alerts&appid=${api_key}`)
+        //     .then(res => res.json())
+        //     .then(res => {
+        //         setForecast(res.daily)
+
+        //     })
+        //     .then(res => console.log('forecast', forecast))
+        //     .catch(error => console.error(error))
+
+
+    }, [city, unit, longitude, latitude])
+
+
+    useEffect(() => {
+        ///
+        //id = cityid
+        const api_key = '1aaf6c74c2a6dee53be44e2f12b30ea7'
 
         // const city = 'Moscow'
         fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly,alerts&appid=${api_key}`)
@@ -78,30 +98,12 @@ const Container = () => {
             .then(res => console.log('forecast', forecast))
             .catch(error => console.error(error))
 
-
-    }, [city, unit, longitude, latitude])
-
-
-    // useEffect(() => {
-    //     ///
-    //     //id = cityid
-    //     const api_key = '1aaf6c74c2a6dee53be44e2f12b30ea7'
-
-    //     // const city = 'Moscow'
-    //     fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly,alerts&appid=${api_key}`)
-    //         .then(res => res.json() )
-    //         .then(res =>{
-    //             setForecast(res.daily)
-
-    //         })
-    //         .then(res => console.log('forecast',forecast))
-    //         .catch(error => console.error(error))
-
-    // }, [city,longitude,latitude])
+    }, [longitude, latitude])
 
     return (
         <div>
             <TopSection>
+            <Search/>
                 <SearchButton />
                 <Avatar />
                 <Temp temp={currentTemp} unit={unit} />
@@ -121,7 +123,7 @@ const Container = () => {
                 </MidArticle >
 
                 <SectionHeader text={"Today's Hightlights"} />
-                <WeatherCard windData={windData} />
+                <WeatherCard windData={windData} wind={true} windDirection={windDirection} />
                 <WeatherCard visibility={true} visibData={visibData} />
                 <WeatherCard humidity={true} humidData={humidData} />
                 <WeatherCard airPressure={true} pressureData={pressureData} />

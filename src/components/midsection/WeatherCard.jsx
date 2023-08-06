@@ -8,7 +8,16 @@ import { distanceConverter } from '../../utility/unitConverter';
 
 
 
-const WeatherCard = ({ wind, visibility, airPressure, humidity, visibData, humidData, pressureData ,windData}) => {
+const WeatherCard = ({ wind, visibility, airPressure, humidity, visibData, humidData, pressureData ,windData,windDirection}) => {
+
+  const styled2={
+    transform:'rotate(-120deg)'
+  }
+  const styled = {
+
+    transform:`rotate(${windDirection}deg)`
+
+  }
 
 
   // set <Card wind={true}/> to choose type of card
@@ -63,7 +72,7 @@ const WeatherCard = ({ wind, visibility, airPressure, humidity, visibData, humid
           <>
             {
               wind && <Typography sx={{ mb: 1.5, display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-                <span className='direction'><NearMeIcon /></span><span> wsw</span>
+                <span className='direction' style={styled}><NearMeIcon /></span><span> wsw</span>
               </Typography>
             }
 
