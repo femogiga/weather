@@ -120,6 +120,7 @@ meter {
   background: var(--mid-blue);
   position: relative;
   padding-bottom: 5rem;
+  z-index: 1;
 
 }
 
@@ -171,12 +172,24 @@ meter {
 
 /********************************* search component********************************** */
 .search {
+  width:100%;
   background-color: var(--mid-blue);
   justify-content: space-between;
   padding: 1rem 1rem;
-  background-color: lightblue;
-  padding-block-end: 15rem
+  /* background-color: lightblue; */
+  height:40rem;
+  transition: height display 220ms ease-in-out 220ms display 200ms ease-in-out 200ms;
+  display:none;
+  height: 0;
+  z-index: -3;
+  position:absolute
 }
+
+/* .top-section:hover  .search{
+  display:block;
+  height:40rem;
+  z-index: 3;
+} */
 
 .search input[type=text] {
 
@@ -209,7 +222,7 @@ meter {
   border-color: var(--norm-blue);
   outline: none;
   width: 100%;
-  min-width: 5rem;
+  min-width: 4.6rem;
 
 }
 
@@ -259,18 +272,27 @@ meter {
   border: 1px solid var(--norm-blue);
 }
 
+.close-cont {
+
+  width: 100%;
+  background-color: white;
+  margin-block-end: 3rem;
+
+}
+
 .close-button {
   width: 100%;
 
 
+
 }
 
-[data-testid = 'CloseIcon'] {
-
-  display: block;
-  margin-left: auto;
-  margin-block-end: 2rem;
-  float: right;
-  margin-right: .75rem;
+.close-cont button {
+  position: absolute;
+  right: 2rem;
   color: white;
+  border: none;
+  background-color: var(--mid-blue);
+  cursor: pointer;
+
 }

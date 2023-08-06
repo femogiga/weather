@@ -13,10 +13,13 @@ const Search = () => {
 
     return (
         <div className='search '>
-            <IconButton aria-label="delete" size="small" className='close-button'>
-                <CloseIcon />
-            </IconButton>
-
+            <div className='close-cont'>
+                <button>
+                    <span className="material-symbols-outlined close-button">
+                    close
+                </span>
+                </button>
+            </div>
             <form className='flex'>
                 <div className='search-cont'>
                     <SearchIcon />
