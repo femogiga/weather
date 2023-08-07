@@ -23,7 +23,7 @@ import Search from "./midsection/Search"
 const Container = () => {
     const [data, setData] = useState([])
     const [unit, setUnit] = useState('C')
-    const [city, setCity] = useState('Paris')
+    const [city, setCity] = useState('jamaica')
 
     const [currentTemp, setCurrentTemp] = useState(0)
     const [minTemp, setMinTemp] = useState(0)
@@ -35,8 +35,9 @@ const Container = () => {
     const [windDirection, setWindDirection] = useState(0)
     const [condition, setCondition] = useState('')
     const [forecast, setForecast] = useState([])
-    const [longitude, setLongitude] = useState(51.8797)
-    const [latitude, setLatitude] = useState(-0.4175)
+    const [longitude, setLongitude] = useState(51.8787)
+    const [latitude, setLatitude] = useState(0.4200)
+    const[description,setDescription]=useState('')
 
 
 
@@ -64,11 +65,12 @@ const Container = () => {
                 setLongitude(res?.coord?.lon)
                 setLatitude((res?.coord?.lat))
 
+
             })
             .then(res => console.log(data))
             .catch(error => console.error(error))
 
-
+            console.log('description', description)
         // const city = 'Moscow'
         // fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly,alerts&appid=${api_key}`)
         //     .then(res => res.json())
@@ -103,9 +105,9 @@ const Container = () => {
     return (
         <div>
             <TopSection>
-            <Search/>
+                <Search />
                 <SearchButton />
-                <Avatar />
+                <Avatar condition={condition} />
                 <Temp temp={currentTemp} unit={unit} />
                 <Conditions condition={condition} />
                 <FullDate dt={data.dt} />
@@ -117,7 +119,7 @@ const Container = () => {
                 <MidArticle >
                     {
 
-                        forecast && forecast.map((day, index) => (<StatCard key={index} low={unitConverter(day?.temp?.min, unit)} high={unitConverter(day?.temp?.max, unit)} unit={unit} dt={day?.dt} />))
+                        forecast && forecast.map((day, index) => (<StatCard key={index} low={unitConverter(day?.temp?.min, unit)} high={unitConverter(day?.temp?.max, unit)} unit={unit} dt={day?.dt} condition={day?.weather[0]?.description} />))
                     }
 
                 </MidArticle >

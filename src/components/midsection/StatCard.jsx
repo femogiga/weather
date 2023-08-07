@@ -12,9 +12,10 @@ import shower from '../../photos/Shower.png';
 import sleet from '../../photos/Sleet.png';
 import snow from '../../photos/Snow.png';
 import { dateConverter } from '../../utility/unitConverter';
+import Avatar from '../Avatar';
 
 
-const StatCard = ({ date, low, high, unit, dt }) => {
+const StatCard = ({ date, low, high, unit, dt,condition }) => {
     // date = dateConverter(dt)
     return (
         <div>
@@ -24,7 +25,8 @@ const StatCard = ({ date, low, high, unit, dt }) => {
                         {dateConverter(dt)}
                     </Typography>
                     <div className='flow-05'>
-                        <img src={heavyRain} alt="weather icon" />
+                        {/* <img src={heavyRain} alt="weather icon" /> */}
+                        <Avatar condition={condition}/>
                     </div>
                     <div className='flex gap-1 flex-just-cent' style={{ fontSize: '.75rem' }}>
                         <span>{high} °{unit}</span>
