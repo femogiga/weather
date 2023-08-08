@@ -23,7 +23,7 @@ import Search from "./midsection/Search"
 const Container = () => {
     const [data, setData] = useState([])
     const [unit, setUnit] = useState('C')
-    const [city, setCity] = useState('jamaica')
+    const [city, setCity] = useState('budapest')
 
     const [currentTemp, setCurrentTemp] = useState(0)
     const [minTemp, setMinTemp] = useState(0)
@@ -37,7 +37,7 @@ const Container = () => {
     const [forecast, setForecast] = useState([])
     const [longitude, setLongitude] = useState(51.8787)
     const [latitude, setLatitude] = useState(0.4200)
-    const[description,setDescription]=useState('')
+    const [description, setDescription] = useState('')
 
 
 
@@ -70,7 +70,7 @@ const Container = () => {
             .then(res => console.log(data))
             .catch(error => console.error(error))
 
-            console.log('description', description)
+        console.log('description', description)
         // const city = 'Moscow'
         // fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly,alerts&appid=${api_key}`)
         //     .then(res => res.json())
