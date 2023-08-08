@@ -23,7 +23,7 @@ import Search from "./midsection/Search"
 const Container = () => {
     const [data, setData] = useState([])
     const [unit, setUnit] = useState('C')
-    const [city, setCity] = useState('budapest')
+    const [city, setCity] = useState('oslo')
 
     const [currentTemp, setCurrentTemp] = useState(0)
     const [minTemp, setMinTemp] = useState(0)
@@ -38,6 +38,27 @@ const Container = () => {
     const [longitude, setLongitude] = useState(51.8787)
     const [latitude, setLatitude] = useState(0.4200)
     const [description, setDescription] = useState('')
+    const [visible, setVisible] = useState(false)
+
+
+
+    const handleTopButtonClick = (e) => {
+        e.preventDefault()
+        const search = document.querySelector('.search')
+        search.classList.add('reveal-search')
+        // console.log('search===>', search)
+        setVisible(true)
+
+    }
+
+    const handleCloseButton = (e)=>{
+        e.preventDefault()
+        setVisible(false)
+
+    }
+
+
+
 
 
 
@@ -105,8 +126,8 @@ const Container = () => {
     return (
         <div>
             <TopSection>
-                <Search />
-                <SearchButton />
+                <Search visible={visible} onClick={(e)=>handleCloseButton(e)}/>
+                <SearchButton onClick={(e) => handleTopButtonClick(e)} />
                 <Avatar condition={condition} />
                 <Temp temp={currentTemp} unit={unit} />
                 <Conditions condition={condition} />

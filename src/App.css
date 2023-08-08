@@ -178,18 +178,24 @@ meter {
   padding: 1rem 1rem;
   /* background-color: lightblue; */
   height:40rem;
-  transition: height display 220ms ease-in-out 220ms display 200ms ease-in-out 200ms;
+  transition: height  300ms ease-in-out 200ms ;
   display:none;
   height: 0;
   z-index: -3;
-  position:absolute
+  position:absolute;
 }
 
-/* .top-section:hover  .search{
+
+.closeSearch  {
+  display:'none'
+}
+
+
+.reveal-search{
   display:block;
   height:40rem;
   z-index: 3;
-} */
+}
 
 .search input[type=text] {
 

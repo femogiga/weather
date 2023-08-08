@@ -8,16 +8,20 @@ import IconButton from '@mui/material/IconButton';
 
 
 
-const Search = () => {
+const Search = ({ visible, onClick }) => {
     const loc = ['London', 'Barcelona', 'Long Beach']
 
+    const closeSearch = {
+        display: 'none'
+    }
+
     return (
-        <div className='search '>
+        <div className={`search`} style={visible ? null : closeSearch}>
             <div className='close-cont'>
-                <button>
+                <button onClick={onClick}>
                     <span className="material-symbols-outlined close-button">
-                    close
-                </span>
+                        close
+                    </span>
                 </button>
             </div>
             <form className='flex'>
