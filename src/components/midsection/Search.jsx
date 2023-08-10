@@ -4,21 +4,26 @@ import SearchLoc from '../SearchLoc';
 import CloseIcon from '@mui/icons-material/Close';
 
 import { useEffect, useState } from 'react';
-import { getStepContentUtilityClass } from '@mui/material';
 
 
 
 
 
-const Search = ({ visible, onClick, city, onChange, onSubmit, inputValue}) => {
-    const loc = ['London', 'Barcelona', 'Long Beach']
+
+const Search = ({ visible, onClick, city, onChange, onSubmit, inputValue, searchLoc }) => {
+     const [loc , setLoc]=useState([])
     const [focus, setFocus] = useState(true)
+
+    const array = []
 
     const closeSearch = {
         display: 'none'
     }
     useEffect(() => {
         console.log('city', city)
+
+        setLoc([...array,city])
+
     }, [city])
 
     const handleFocus = () => {
@@ -54,7 +59,7 @@ const Search = ({ visible, onClick, city, onChange, onSubmit, inputValue}) => {
             </form>
             <div>
                 {
-                    loc.map((place, index) => (<SearchLoc key={index} location={place} />))
+                    searchLoc.map((place, index) => (<SearchLoc key={index} location={place} />))
                 }
             </div>
 

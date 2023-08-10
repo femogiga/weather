@@ -40,6 +40,7 @@ const Container = () => {
     const [description, setDescription] = useState('')
     const [visible, setVisible] = useState(false)
     const [inputValue, setInputValue] = useState('')
+    const [searchLoc, setSearchLoc] = useState(['Luton'])
 
 
 
@@ -66,12 +67,15 @@ const Container = () => {
 
 
     const handleSubmit = (e) => {
+        e.preventDefault()
         if (inputValue === '' || typeof inputValue !== 'string') {
             return
         }
+
         setCity(inputValue)
         setVisible(false)
         setInputValue('')
+        setSearchLoc([...searchLoc,inputValue].reverse())
         e.preventDefault()
     }
 
@@ -115,16 +119,7 @@ const Container = () => {
             .then(res => console.log(data))
             .catch(error => console.error(error))
 
-        console.log('description', description)
-        // const city = 'Moscow'
-        // fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly,alerts&appid=${api_key}`)
-        //     .then(res => res.json())
-        //     .then(res => {
-        //         setForecast(res.daily)
 
-        //     })
-        //     .then(res => console.log('forecast', forecast))
-        //     .catch(error => console.error(error))
 
 
     }, [city, unit, longitude, latitude])
@@ -150,7 +145,7 @@ const Container = () => {
     return (
         <div className="container">
             <TopSection>
-                <Search visible={visible} onClick={(e) => handleCloseButton(e)} onChange={(e) => handleInputChange(e)} city={city} onSubmit={(e) => handleSubmit(e)} inputValue={inputValue} />
+                <Search searchLoc={searchLoc} visible={visible} onClick={(e) => handleCloseButton(e)} onChange={(e) => handleInputChange(e)} city={city} onSubmit={(e) => handleSubmit(e)} inputValue={inputValue} />
                 <SearchButton onClick={(e) => handleTopButtonClick(e)} />
                 <Avatar condition={condition} />
                 <Temp temp={currentTemp} unit={unit} />
