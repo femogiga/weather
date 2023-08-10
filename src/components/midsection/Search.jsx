@@ -2,18 +2,29 @@
 import SearchIcon from '@mui/icons-material/Search';
 import SearchLoc from '../SearchLoc';
 import CloseIcon from '@mui/icons-material/Close';
-import IconButton from '@mui/material/IconButton';
+
+import { useEffect, useState } from 'react';
+import { getStepContentUtilityClass } from '@mui/material';
 
 
 
 
 
-const Search = ({ visible, onClick }) => {
+const Search = ({ visible, onClick, city, onChange, onSubmit, inputValue }) => {
     const loc = ['London', 'Barcelona', 'Long Beach']
+    // const[newPlace ,setNewPlace]=useState("luton")
 
     const closeSearch = {
         display: 'none'
     }
+    useEffect(() => {
+        console.log('city', city)
+    }, [city])
+
+
+
+
+
 
     return (
         <div className={`search`} style={visible ? null : closeSearch}>
@@ -24,14 +35,15 @@ const Search = ({ visible, onClick }) => {
                     </span>
                 </button>
             </div>
-            <form className='flex'>
+            <form className='flex' onSubmit={onSubmit} >
+
                 <div className='search-cont'>
                     <SearchIcon />
-                    <input type='text' placeholder='search location' />
+                    <input value={inputValue} type='text' placeholder='search location' onChange={onChange} name={city} />
                 </div>
 
                 <div className='button-cont flow-2'>
-                    <button>Search</button>
+                    <button >Search</button>
                 </div>
             </form>
             <div>

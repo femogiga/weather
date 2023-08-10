@@ -172,28 +172,26 @@ meter {
 
 /********************************* search component********************************** */
 .search {
-  width:100%;
+  width: 100%;
   background-color: var(--mid-blue);
   justify-content: space-between;
   padding: 1rem 1rem;
   /* background-color: lightblue; */
-  height:40rem;
-  transition: height  300ms ease-in-out 200ms ;
-  display:none;
+  height: 40rem;
+  transition: height 300ms ease-in-out 200ms;
+  display: none;
   height: 0;
   z-index: -3;
-  position:absolute;
+  position: absolute;
 }
 
 
-.closeSearch  {
-  display:'none'
-}
 
 
-.reveal-search{
-  display:block;
-  height:40rem;
+
+.reveal-search {
+  display: block;
+  height: 100vh;
   z-index: 3;
 }
 
@@ -248,6 +246,10 @@ meter {
   top: .75rem;
   left: 1rem;
   color: grey
+}
+
+.search-cont input{
+  color:white;
 }
 
 .search-loc {

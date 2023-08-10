@@ -23,7 +23,7 @@ import Search from "./midsection/Search"
 const Container = () => {
     const [data, setData] = useState([])
     const [unit, setUnit] = useState('C')
-    const [city, setCity] = useState('oslo')
+    const [city, setCity] = useState('katowice')
 
     const [currentTemp, setCurrentTemp] = useState(0)
     const [minTemp, setMinTemp] = useState(0)
@@ -39,6 +39,7 @@ const Container = () => {
     const [latitude, setLatitude] = useState(0.4200)
     const [description, setDescription] = useState('')
     const [visible, setVisible] = useState(false)
+    const [inputValue, setInputValue] = useState('')
 
 
 
@@ -51,11 +52,29 @@ const Container = () => {
 
     }
 
-    const handleCloseButton = (e)=>{
+    const handleCloseButton = (e) => {
         e.preventDefault()
         setVisible(false)
 
     }
+
+
+    const handleInputChange = (e) =>{
+     setInputValue(e.target.value)
+    }
+
+
+    const handleSubmit = (e)=>{
+        setCity(inputValue)
+        setVisible(false)
+        e.preventDefault()
+    }
+
+
+
+
+
+
 
 
 
@@ -81,7 +100,7 @@ const Container = () => {
                 setPressureData(loc?.pressure)
                 setVisibData(res?.visibility)
                 setWindData(res?.wind?.speed.toFixed(0))
-                setWindDirection(res.wind.deg)
+                setWindDirection(res?.wind?.deg)
                 setCondition(res?.weather[0]?.description)
                 setLongitude(res?.coord?.lon)
                 setLatitude((res?.coord?.lat))
@@ -126,7 +145,7 @@ const Container = () => {
     return (
         <div>
             <TopSection>
-                <Search visible={visible} onClick={(e)=>handleCloseButton(e)}/>
+                <Search visible={visible} onClick={(e) => handleCloseButton(e)}  onChange={(e)=>handleInputChange(e)} city={city} onSubmit={(e)=>handleSubmit(e)} inputValue={inputValue}/>
                 <SearchButton onClick={(e) => handleTopButtonClick(e)} />
                 <Avatar condition={condition} />
                 <Temp temp={currentTemp} unit={unit} />
