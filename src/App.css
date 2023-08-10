@@ -30,6 +30,7 @@
 
 body {
   line-height: 1.6;
+
 }
 
 img {
@@ -103,7 +104,9 @@ meter {
 
 /* **************************************************************************************************************** */
 
-
+.heading {
+  margin-inline-start: 2rem;
+}
 
 .search-button {
   justify-content: space-between;
@@ -151,11 +154,16 @@ meter {
   flex-direction: column;
   gap: 2rem;
   align-items: center;
-  padding-block-end: 7rem;
+  padding-block-end: 2rem;
+
 }
 
 .stat {
   font-size: 4rem;
+}
+
+.stat-card img {
+  width: 60%
 }
 
 .percent {
@@ -248,12 +256,12 @@ meter {
   color: grey
 }
 
-.search-cont input{
-  color:white;
+.search-cont input {
+  color: white;
 }
 
-.search-cont input:focus::placeholder{
-  color:transparent;
+.search-cont input:focus::placeholder {
+  color: transparent;
 }
 
 
@@ -308,5 +316,39 @@ meter {
   border: none;
   background-color: var(--mid-blue);
   cursor: pointer;
+
+}
+
+
+@media screen and (min-width:900px) {
+  .container {
+    display: flex;
+    background-color: aqua;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  .top-section {
+    width: 100%
+  }
+
+  .mid-section {
+    max-width: unset;
+    padding: unset;
+    padding-block-start: 6rem;
+  }
+
+  .weather-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-items: flex-start;
+    gap: 3rem;
+  }
+
+  .mid-article {
+    justify-content: flex-start;
+  }
+
 
 }

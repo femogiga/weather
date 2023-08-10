@@ -66,11 +66,12 @@ const Container = () => {
 
 
     const handleSubmit = (e) => {
-        if(inputValue ==='' || typeof inputValue !== 'string'){
+        if (inputValue === '' || typeof inputValue !== 'string') {
             return
         }
         setCity(inputValue)
         setVisible(false)
+        setInputValue('')
         e.preventDefault()
     }
 
@@ -135,10 +136,10 @@ const Container = () => {
         const api_key = '1aaf6c74c2a6dee53be44e2f12b30ea7'
 
         // const city = 'Moscow'
-        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly,alerts&appid=${api_key}`)
+        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly,alerts&appid=${api_key}&cnt=40`)
             .then(res => res.json())
             .then(res => {
-                setForecast(res.daily)
+                setForecast(res.daily.splice(1, 5))
 
             })
             .then(res => console.log('forecast', forecast))
@@ -147,7 +148,7 @@ const Container = () => {
     }, [longitude, latitude])
 
     return (
-        <div>
+        <div className="container">
             <TopSection>
                 <Search visible={visible} onClick={(e) => handleCloseButton(e)} onChange={(e) => handleInputChange(e)} city={city} onSubmit={(e) => handleSubmit(e)} inputValue={inputValue} />
                 <SearchButton onClick={(e) => handleTopButtonClick(e)} />
@@ -169,10 +170,12 @@ const Container = () => {
                 </MidArticle >
 
                 <SectionHeader text={"Today's Hightlights"} />
-                <WeatherCard windData={windData} wind={true} windDirection={windDirection} />
-                <WeatherCard visibility={true} visibData={visibData} />
-                <WeatherCard humidity={true} humidData={humidData} />
-                <WeatherCard airPressure={true} pressureData={pressureData} />
+                <div className='weather-card'>
+                    <WeatherCard windData={windData} wind={true} windDirection={windDirection} />
+                    <WeatherCard humidity={true} humidData={humidData} />
+                    <WeatherCard visibility={true} visibData={visibData} />
+                    <WeatherCard airPressure={true} pressureData={pressureData} />
+                </div>
             </MidSection >
 
         </div >

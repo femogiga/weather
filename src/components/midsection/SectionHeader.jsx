@@ -1,6 +1,6 @@
 const SectionHeader = ({ text }) => {
     return (
-        <div style={{ alignSelf: 'flex-start', color: 'white' }}>
+        <div className='heading' style={{ alignSelf: 'flex-start', color: 'white' }}>
             <h3>{text}</h3>
         </div>
     )

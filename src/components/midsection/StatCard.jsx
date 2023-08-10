@@ -9,8 +9,8 @@ import Avatar from '../Avatar';
 const StatCard = ({ date, low, high, unit, dt, condition }) => {
     // date = dateConverter(dt)
     return (
-        <div>
-            <Card sx={{ minWidth: 110, maxWidth: 100, textAlign: 'center', color: 'white', backgroundColor: '#1E213A', padding: '0 rem' }}>
+        <div className='stat-card'>
+            <Card sx={{ minWidth: 110, maxWidth: 100,minHeight:177, textAlign: 'center', color: 'white', backgroundColor: '#1E213A', padding: '0 rem' }}>
                 <CardContent>
                     <Typography sx={{ fontSize: '.8rem' }} gutterBottom>
                         {dateConverter(dt)}

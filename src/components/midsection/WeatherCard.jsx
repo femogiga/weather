@@ -15,13 +15,11 @@ import NavigationIcon from '@mui/icons-material/Navigation';
 
 const WeatherCard = ({ wind, visibility, airPressure, humidity, visibData, humidData, pressureData, windData, windDirection }) => {
 
-  const styled2 = {
-    transform: 'rotate(-90deg)'
-  }
+  
   //rotateValue is used to set the direction of compass
   const rotateValue = windDirection- 90
   const styled = {
-
+    transformOrigin:'center center',
     transform: `rotate(${rotateValue}deg)`
 
   }
