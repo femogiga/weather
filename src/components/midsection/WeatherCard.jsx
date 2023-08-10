@@ -4,20 +4,28 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import NearMeIcon from '@mui/icons-material/NearMe';
 import { distanceConverter } from '../../utility/unitConverter';
+import { windCompass } from '../../utility/windCompass';
+import NavigationIcon from '@mui/icons-material/Navigation';
 
 
 
 
-const WeatherCard = ({ wind, visibility, airPressure, humidity, visibData, humidData, pressureData ,windData,windDirection}) => {
 
-  const styled2={
-    transform:'rotate(-120deg)'
+
+
+const WeatherCard = ({ wind, visibility, airPressure, humidity, visibData, humidData, pressureData, windData, windDirection }) => {
+
+  const styled2 = {
+    transform: 'rotate(-90deg)'
   }
+  //rotateValue is used to set the direction of compass
+  const rotateValue = windDirection- 90
   const styled = {
 
-    transform:`rotate(${windDirection}deg)`
+    transform: `rotate(${rotateValue}deg)`
 
   }
+  console.log('windData', windData)
 
 
   // set <Card wind={true}/> to choose type of card
@@ -51,7 +59,7 @@ const WeatherCard = ({ wind, visibility, airPressure, humidity, visibData, humid
   else {
     text = 'Wind status'
     unit = 'mph'
-    data=windData
+    data = windData
     visibility = airPressure = humidity = false
   }
   return (
@@ -72,7 +80,7 @@ const WeatherCard = ({ wind, visibility, airPressure, humidity, visibData, humid
           <>
             {
               wind && <Typography sx={{ mb: 1.5, display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-                <span className='direction' style={styled}><NearMeIcon /></span><span> wsw</span>
+                <span className='direction' style={styled}><NavigationIcon/></span><span>{windCompass(windDirection)}</span>
               </Typography>
             }
 
