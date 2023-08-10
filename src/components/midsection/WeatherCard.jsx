@@ -15,7 +15,7 @@ import NavigationIcon from '@mui/icons-material/Navigation';
 
 const WeatherCard = ({ wind, visibility, airPressure, humidity, visibData, humidData, pressureData, windData, windDirection }) => {
 
-  
+
   //rotateValue is used to set the direction of compass
   const rotateValue = windDirection- 90
   const styled = {
@@ -61,7 +61,7 @@ const WeatherCard = ({ wind, visibility, airPressure, humidity, visibData, humid
     visibility = airPressure = humidity = false
   }
   return (
-    <div>
+    <div className='big-card'>
 
       <Card sx={{ minWidth: 280, maxWidth: 350, textAlign: 'center', color: 'white', backgroundColor: '#1E213A', padding: '0 rem' }}>
         <CardContent>

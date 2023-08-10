@@ -117,13 +117,14 @@ meter {
 }
 
 .top-section {
-  max-width: 28.688rem;
+  /* max-width: 24rem; */
   display: flex;
   flex-direction: column;
   background: var(--mid-blue);
   position: relative;
   padding-bottom: 5rem;
   z-index: 1;
+  min-width:18.75rem ;
 
 }
 
@@ -149,13 +150,13 @@ meter {
 .mid-section {
   padding: 3rem 0;
   background-color: var(--dark-blue);
-  max-width: 28.688rem;
+  /* max-width: 24rem; */
   display: flex;
   flex-direction: column;
   gap: 2rem;
   align-items: center;
   padding-block-end: 2rem;
-
+  min-width:18.75rem ;
 }
 
 .stat {
@@ -319,8 +320,19 @@ meter {
 
 }
 
+@media screen and (min-width:300px){
+  .big-card{
+    margin-block-end: 2rem;
+  }
+  .mid-article{
+    width:100%;
+    padding-inline: 1rem;
+    justify-content: flex-start;
+  }
+}
 
-@media screen and (min-width:900px) {
+
+@media screen and (min-width:600px) {
   .container {
     display: flex;
     background-color: aqua;
@@ -329,13 +341,16 @@ meter {
   }
 
   .top-section {
-    width: 100%
+    width: 100%;
+      max-width: 24rem; 
+
   }
 
   .mid-section {
     max-width: unset;
     padding: unset;
     padding-block-start: 6rem;
+
   }
 
   .weather-card {
@@ -344,11 +359,21 @@ meter {
     justify-content: center;
     justify-items: flex-start;
     gap: 3rem;
+    padding:2rem 0;
   }
+
+
 
   .mid-article {
     justify-content: flex-start;
   }
 
 
+}
+
+@media screen and (min-width:1046px){
+
+  .mid-article{
+    justify-content: center;
+  }
 }
