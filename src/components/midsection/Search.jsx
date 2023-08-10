@@ -10,9 +10,9 @@ import { getStepContentUtilityClass } from '@mui/material';
 
 
 
-const Search = ({ visible, onClick, city, onChange, onSubmit, inputValue }) => {
+const Search = ({ visible, onClick, city, onChange, onSubmit, inputValue}) => {
     const loc = ['London', 'Barcelona', 'Long Beach']
-    // const[newPlace ,setNewPlace]=useState("luton")
+    const [focus, setFocus] = useState(true)
 
     const closeSearch = {
         display: 'none'
@@ -21,7 +21,13 @@ const Search = ({ visible, onClick, city, onChange, onSubmit, inputValue }) => {
         console.log('city', city)
     }, [city])
 
+    const handleFocus = () => {
+        setFocus(false)
+    }
 
+    const handleBlur = () => {
+        setFocus(true)
+    }
 
 
 
@@ -38,8 +44,8 @@ const Search = ({ visible, onClick, city, onChange, onSubmit, inputValue }) => {
             <form className='flex' onSubmit={onSubmit} >
 
                 <div className='search-cont'>
-                    <SearchIcon />
-                    <input value={inputValue} type='text' placeholder='search location' onChange={onChange} name={city} />
+                    {focus && <SearchIcon />}
+                    <input value={inputValue} type='text' placeholder='search location' onChange={onChange} name={city} onFocus={handleFocus} onBlur={handleBlur} />
                 </div>
 
                 <div className='button-cont flow-2'>

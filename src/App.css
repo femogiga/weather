@@ -252,6 +252,12 @@ meter {
   color:white;
 }
 
+.search-cont input:focus::placeholder{
+  color:transparent;
+}
+
+
+
 .search-loc {
 
   position: relative;

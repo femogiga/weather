@@ -23,7 +23,7 @@ import Search from "./midsection/Search"
 const Container = () => {
     const [data, setData] = useState([])
     const [unit, setUnit] = useState('C')
-    const [city, setCity] = useState('katowice')
+    const [city, setCity] = useState('luton')
 
     const [currentTemp, setCurrentTemp] = useState(0)
     const [minTemp, setMinTemp] = useState(0)
@@ -43,6 +43,7 @@ const Container = () => {
 
 
 
+
     const handleTopButtonClick = (e) => {
         e.preventDefault()
         const search = document.querySelector('.search')
@@ -59,12 +60,15 @@ const Container = () => {
     }
 
 
-    const handleInputChange = (e) =>{
-     setInputValue(e.target.value)
+    const handleInputChange = (e) => {
+        setInputValue(e.target.value)
     }
 
 
-    const handleSubmit = (e)=>{
+    const handleSubmit = (e) => {
+        if(inputValue ==='' || typeof inputValue !== 'string'){
+            return
+        }
         setCity(inputValue)
         setVisible(false)
         e.preventDefault()
@@ -145,7 +149,7 @@ const Container = () => {
     return (
         <div>
             <TopSection>
-                <Search visible={visible} onClick={(e) => handleCloseButton(e)}  onChange={(e)=>handleInputChange(e)} city={city} onSubmit={(e)=>handleSubmit(e)} inputValue={inputValue}/>
+                <Search visible={visible} onClick={(e) => handleCloseButton(e)} onChange={(e) => handleInputChange(e)} city={city} onSubmit={(e) => handleSubmit(e)} inputValue={inputValue} />
                 <SearchButton onClick={(e) => handleTopButtonClick(e)} />
                 <Avatar condition={condition} />
                 <Temp temp={currentTemp} unit={unit} />
