@@ -155,8 +155,10 @@ const Container = () => {
                 <Avatar condition={condition} />
                 <Temp temp={currentTemp} unit={unit} />
                 <Conditions condition={condition} />
-                <FullDate dt={data.dt} />
-                <Location city={city} />
+                <div>
+                    <FullDate dt={data.dt} />
+                    <Location city={city} />
+                </div>
             </TopSection>
 
 

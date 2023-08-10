@@ -8,7 +8,7 @@ const Location = ({city})=>{
         color:'#A09FB1'
     }
     return(
-        <div style={locStyle}>
+        <div style={locStyle} className='location' >
             <p className='flex flex-just-cen gap'><span><PlaceIcon/></span><span>{city}</span></p>
         </div>
     )

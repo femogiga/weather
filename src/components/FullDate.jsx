@@ -12,7 +12,7 @@ const FullDate = ({dt}) => {
      const date = moment(new Date()).format('ddd, D MMM')
 
     return (
-        <div className='flow-1' style={dateStyle}>
+        <div className='' style={dateStyle}>
             <p >Today  <span className='mg-1'>.</span> <span className='mg-1'> {` ${date}`} </span> </p>
         </div>
     )

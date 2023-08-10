@@ -14,7 +14,7 @@ const Conditions = ({ condition }) => {
     //         break;
     // }
     return (
-        <div className='flow-2' style={condStyle}>
+        <div className='flow-4' style={condStyle}>
             <h2 >{condition}</h2>
         </div>
     )

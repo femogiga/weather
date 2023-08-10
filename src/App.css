@@ -68,6 +68,10 @@ meter {
   margin-block-end: 4rem;
 }
 
+.flow-5 {
+  margin-block-end: 5rem;
+}
+
 
 .flex {
   display: flex;
@@ -110,11 +114,10 @@ meter {
 
 .search-button {
   justify-content: space-between;
+  margin-block-start: 1rem;
 }
 
-.loc-icon {
-  border-radius: px;
-}
+
 
 .top-section {
   /* max-width: 24rem; */
@@ -124,8 +127,8 @@ meter {
   position: relative;
   padding-bottom: 5rem;
   z-index: 1;
-  min-width:18.75rem ;
-
+  min-width: 18.75rem;
+  row-gap: 2rem
 }
 
 
@@ -156,7 +159,7 @@ meter {
   gap: 2rem;
   align-items: center;
   padding-block-end: 2rem;
-  min-width:18.75rem ;
+  min-width: 18.75rem;
 }
 
 .stat {
@@ -265,6 +268,10 @@ meter {
   color: transparent;
 }
 
+.location {
+  margin-block-start: 2rem;
+}
+
 
 
 .search-loc {
@@ -320,12 +327,13 @@ meter {
 
 }
 
-@media screen and (min-width:300px){
-  .big-card{
+@media screen and (min-width:300px) {
+  .big-card {
     margin-block-end: 2rem;
   }
-  .mid-article{
-    width:100%;
+
+  .mid-article {
+    width: 100%;
     padding-inline: 1rem;
     justify-content: flex-start;
   }
@@ -342,7 +350,7 @@ meter {
 
   .top-section {
     width: 100%;
-      max-width: 24rem; 
+    max-width: 24rem;
 
   }
 
@@ -359,7 +367,7 @@ meter {
     justify-content: center;
     justify-items: flex-start;
     gap: 3rem;
-    padding:2rem 0;
+    padding: 2rem 0;
   }
 
 
@@ -371,9 +379,9 @@ meter {
 
 }
 
-@media screen and (min-width:1046px){
+@media screen and (min-width:1046px) {
 
-  .mid-article{
+  .mid-article {
     justify-content: center;
   }
 }
