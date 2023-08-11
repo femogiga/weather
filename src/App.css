@@ -242,6 +242,15 @@ meter {
 
 }
 
+.unit >button{
+  font-size: 1rem;
+
+}
+.wrapper{
+  margin-inline-start:auto;
+
+}
+
 
 
 .search-cont {
@@ -327,7 +336,7 @@ meter {
 
 }
 
-@media screen and (min-width:300px) {
+@media screen and (min-width:200px) {
   .big-card {
     margin-block-end: 2rem;
   }
@@ -337,6 +346,12 @@ meter {
     padding-inline: 1rem;
     justify-content: flex-start;
   }
+ .wrapper{
+  margin-inline-end:1rem;
+  order:-3
+ }
+
+
 }
 
 
@@ -357,7 +372,7 @@ meter {
   .mid-section {
     max-width: unset;
     padding: unset;
-    padding-block-start: 6rem;
+    padding-block-start: 2rem;
 
   }
 
@@ -377,11 +392,17 @@ meter {
   }
 
 
+
+
+
 }
 
 @media screen and (min-width:1046px) {
 
   .mid-article {
     justify-content: center;
+  }
+  .wrapper{
+    margin-inline-end:8rem
   }
 }

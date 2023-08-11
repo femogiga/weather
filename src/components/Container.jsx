@@ -13,6 +13,8 @@ import StatCard from "./midsection/StatCard"
 import WeatherCard from "./midsection/WeatherCard"
 import { unitConverter } from "../utility/unitConverter"
 import Search from "./midsection/Search"
+import Unit from "./Unit"
+import Wrapper from "./midsection/Wrapper"
 
 
 //set True on any of the WeatherCards component props to select
@@ -75,7 +77,7 @@ const Container = () => {
         setCity(inputValue)
         setVisible(false)
         setInputValue('')
-        setSearchLoc([...searchLoc,inputValue].reverse())
+        setSearchLoc([...searchLoc, inputValue].reverse())
         e.preventDefault()
     }
 
@@ -134,7 +136,7 @@ const Container = () => {
         fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly,alerts&appid=${api_key}&cnt=40`)
             .then(res => res.json())
             .then(res => {
-                setForecast(res.daily.splice(1, 5))
+                setForecast(res.daily?.splice(1, 5))
 
             })
             .then(res => console.log('forecast', forecast))
@@ -158,6 +160,11 @@ const Container = () => {
 
 
             <MidSection>
+                <Wrapper>
+                    <Unit unit={'°C'} />
+                    <Unit unit={'°F'}/>
+                </Wrapper>
+
                 <MidArticle >
                     {
 
