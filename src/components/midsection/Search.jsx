@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 
 
 
-const Search = ({ visible, onClick, city, onChange, onSubmit, inputValue, searchLoc }) => {
+const Search = ({ visible, onClick, city, onChange, onSubmit, inputValue, searchLoc ,onSearchLoc}) => {
      const [loc , setLoc]=useState([])
     const [focus, setFocus] = useState(true)
 
@@ -59,7 +59,7 @@ const Search = ({ visible, onClick, city, onChange, onSubmit, inputValue, search
             </form>
             <div>
                 {
-                    searchLoc.map((place, index) => (<SearchLoc key={index} location={place} />))
+                    searchLoc.map((place, index) => (<SearchLoc onSearchLoc={onSearchLoc} key={index} location={place} />))
                 }
             </div>
 
