@@ -23,6 +23,9 @@ const WeatherCard = ({ wind, visibility, airPressure, humidity, visibData, humid
     transform: `rotate(${rotateValue}deg)`
 
   }
+  const unitStyle = {
+      fontSize:'2rem'
+  }
   console.log('windData', windData)
 
 
@@ -70,7 +73,7 @@ const WeatherCard = ({ wind, visibility, airPressure, humidity, visibData, humid
           </Typography>
 
           <Typography sx={{ mb: 1.5 }}>
-            <span className='stat'>{data}</span><span>{unit}</span>
+            <span className='stat'>{data}</span><span style={unitStyle}>{unit}</span>
           </Typography>
 
 

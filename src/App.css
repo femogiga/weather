@@ -30,6 +30,7 @@
 
 body {
   line-height: 1.6;
+  font-family: 'Raleway', sans-serif, 'Poppins';
 
 }
 
@@ -242,12 +243,13 @@ meter {
 
 }
 
-.unit >button{
+.unit>button {
   font-size: 1rem;
 
 }
-.wrapper{
-  margin-inline-start:auto;
+
+.wrapper {
+  margin-inline-start: auto;
 
 }
 
@@ -346,10 +348,11 @@ meter {
     padding-inline: 1rem;
     justify-content: flex-start;
   }
- .wrapper{
-  margin-inline-end:1rem;
-  order:-3
- }
+
+  .wrapper {
+    margin-inline-end: 1rem;
+    order: -3
+  }
 
 
 }
@@ -402,7 +405,8 @@ meter {
   .mid-article {
     justify-content: center;
   }
-  .wrapper{
-    margin-inline-end:8rem
+
+  .wrapper {
+    margin-inline-end: 8rem
   }
 }

@@ -127,11 +127,11 @@ const Container = () => {
 
 
 
-const handleSearchLoc = (e)=>{
-    console.log('innerText',e.target.innerText)
-    setCity(e.target.id)
-    setVisible(false)
-}
+    const handleSearchLoc = (e) => {
+        console.log('innerText', e.target.innerText)
+        setCity(e.target.id)
+        setVisible(false)
+    }
 
 
 
@@ -197,7 +197,7 @@ const handleSearchLoc = (e)=>{
     return (
         <div className="container">
             <TopSection>
-                <Search onSearchLoc ={(e)=>handleSearchLoc(e)} searchLoc={searchLoc} visible={visible} onClick={(e) => handleCloseButton(e)} onChange={(e) => handleInputChange(e)} city={city} onSubmit={(e) => handleSubmit(e)} inputValue={inputValue} />
+                <Search onSearchLoc={(e) => handleSearchLoc(e)} searchLoc={searchLoc} visible={visible} onClick={(e) => handleCloseButton(e)} onChange={(e) => handleInputChange(e)} city={city} onSubmit={(e) => handleSubmit(e)} inputValue={inputValue} />
                 <SearchButton onClick={(e) => handleTopButtonClick(e)} onGeo={handleGeolocation} />
                 <Avatar condition={condition} />
                 <Temp temp={currentTemp} unit={unit} />
