@@ -94,6 +94,7 @@ const Container = () => {
 
 
 
+
     useEffect(() => {
 
         const api_key = '1aaf6c74c2a6dee53be44e2f12b30ea7'
@@ -161,8 +162,8 @@ const Container = () => {
 
             <MidSection>
                 <Wrapper>
-                    <Unit unit={'°C'} />
-                    <Unit unit={'°F'}/>
+                    <Unit unit={'°C'} key='C' onClick={() => { setUnit('C') }} />
+                    <Unit unit={'°F'} key='F' onClick={() => { setUnit('F') }} />
                 </Wrapper>
 
                 <MidArticle >

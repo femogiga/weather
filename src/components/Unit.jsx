@@ -1,7 +1,7 @@
 import { IconButton,Button } from '@mui/material';
 
 
-const Unit = ({unit}) => {
+const Unit = ({unit,onClick ,key}) => {
     const unitStyle = {
         backgroundColor:'#6E707A',
         color:'white'
@@ -9,7 +9,7 @@ const Unit = ({unit}) => {
 
     return (
         <div className='unit'>
-            <IconButton style={unitStyle}>
+            <IconButton key={key} onClick={onClick} style={unitStyle}>
              {unit}
             </IconButton>
         </div>
