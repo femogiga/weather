@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { cloneElement, useEffect, useState } from "react"
 import Avatar from "./Avatar"
 import Conditions from "./Conditions"
 import FullDate from "./FullDate"
@@ -15,6 +15,9 @@ import { unitConverter } from "../utility/unitConverter"
 import Search from "./midsection/Search"
 import Unit from "./Unit"
 import Wrapper from "./midsection/Wrapper"
+import { getPosition } from "../utility/geoLocation"
+
+
 
 
 //set True on any of the WeatherCards component props to select
@@ -39,7 +42,6 @@ const Container = () => {
     const [forecast, setForecast] = useState([])
     const [longitude, setLongitude] = useState(51.8787)
     const [latitude, setLatitude] = useState(0.4200)
-    const [description, setDescription] = useState('')
     const [visible, setVisible] = useState(false)
     const [inputValue, setInputValue] = useState('')
     const [searchLoc, setSearchLoc] = useState(['Luton'])
@@ -51,7 +53,6 @@ const Container = () => {
         e.preventDefault()
         const search = document.querySelector('.search')
         search.classList.add('reveal-search')
-        // console.log('search===>', search)
         setVisible(true)
 
     }
@@ -81,8 +82,46 @@ const Container = () => {
         e.preventDefault()
     }
 
+    console.log('city=====>', city)
 
 
+    const handleGeolocation = () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                async function (position) {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+
+                    // Fetching city name using Reverse Geocoding API (e.g., OpenCageData)
+                    const reverseGeocodingApiKey = "36b43312fbe945a1b49bbe089eb455e1";
+                    const reverseGeocodingUrl = `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lon}&key=${reverseGeocodingApiKey}`;
+                    try {
+                        const response = await fetch(reverseGeocodingUrl);
+                        const data1 = await response.json();
+                        console.log('data-open', data1)
+                        if (data1.results && data1.results[0]) {
+                            const city2 = data1.results[0]?.components?.city || data1.results[0]?.components?.county;
+                            console.log('city2', city2)
+                            setCity(city2);
+                        } else {
+                            console.error("City name not found in reverse geocoding results.");
+                        }
+                    } catch (error) {
+                        console.error("Error fetching city name:", error);
+                    }
+
+                    // Seting the latitude and longitude states
+                    setLatitude(lat);
+                    setLongitude(lon);
+                },
+                function (error) {
+                    console.error("Error getting geolocation:", error.message);
+                }
+            );
+        } else {
+            console.error("Geolocation is not supported by this browser.");
+        }
+    };
 
 
 
@@ -118,8 +157,9 @@ const Container = () => {
                 setLatitude((res?.coord?.lat))
 
 
+
             })
-            .then(res => console.log(data))
+            .then(res => console.log('data', data))
             .catch(error => console.error(error))
 
 
@@ -137,7 +177,9 @@ const Container = () => {
         fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly,alerts&appid=${api_key}&cnt=40`)
             .then(res => res.json())
             .then(res => {
+                console.log('cityName', res)
                 setForecast(res.daily?.splice(1, 5))
+                // setCity(res?.name)
 
             })
             .then(res => console.log('forecast', forecast))
@@ -145,11 +187,14 @@ const Container = () => {
 
     }, [longitude, latitude])
 
+
+
+
     return (
         <div className="container">
             <TopSection>
                 <Search searchLoc={searchLoc} visible={visible} onClick={(e) => handleCloseButton(e)} onChange={(e) => handleInputChange(e)} city={city} onSubmit={(e) => handleSubmit(e)} inputValue={inputValue} />
-                <SearchButton onClick={(e) => handleTopButtonClick(e)} />
+                <SearchButton onClick={(e) => handleTopButtonClick(e)} onGeo={handleGeolocation} />
                 <Avatar condition={condition} />
                 <Temp temp={currentTemp} unit={unit} />
                 <Conditions condition={condition} />
