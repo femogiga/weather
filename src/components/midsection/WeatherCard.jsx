@@ -26,7 +26,7 @@ const WeatherCard = ({ wind, visibility, airPressure, humidity, visibData, humid
   const unitStyle = {
       fontSize:'2rem'
   }
-  console.log('windData', windData)
+  
 
 
   // set <Card wind={true}/> to choose type of card

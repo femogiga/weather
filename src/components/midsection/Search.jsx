@@ -2,16 +2,11 @@
 import SearchIcon from '@mui/icons-material/Search';
 import SearchLoc from '../SearchLoc';
 import CloseIcon from '@mui/icons-material/Close';
-
 import { useEffect, useState } from 'react';
 
 
-
-
-
-
-const Search = ({ visible, onClick, city, onChange, onSubmit, inputValue, searchLoc ,onSearchLoc}) => {
-     const [loc , setLoc]=useState([])
+const Search = ({ visible, onClick, city, onChange, onSubmit, inputValue, searchLoc, onSearchLoc }) => {
+    const [loc, setLoc] = useState([])
     const [focus, setFocus] = useState(true)
 
     const array = []
@@ -20,10 +15,7 @@ const Search = ({ visible, onClick, city, onChange, onSubmit, inputValue, search
         display: 'none'
     }
     useEffect(() => {
-        console.log('city', city)
-
-        setLoc([...array,city])
-
+        setLoc([...array, city])
     }, [city])
 
     const handleFocus = () => {

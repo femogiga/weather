@@ -33,20 +33,20 @@ const Container = () => {
     const [currentTemp, setCurrentTemp] = useState(0)
     // const [minTemp, setMinTemp] = useState(0)
     // const [maxTemp, setMaxTemp] = useState(0)
-    const [humidData, setHumidData] = useState(0)
-    const [pressureData, setPressureData] = useState(0)
-    const [visibData, setVisibData] = useState(0)
-    const [windData, setWindData] = useState(0)
-    const [windDirection, setWindDirection] = useState(0)
-    const [condition, setCondition] = useState('')
-    const [forecast, setForecast] = useState([])
-    const [longitude, setLongitude] = useState(51.8787)
-    const [latitude, setLatitude] = useState(0.4200)
-    const [visible, setVisible] = useState(false)
-    const [inputValue, setInputValue] = useState('')
-    const [searchLoc, setSearchLoc] = useState(['Luton'])
-    const [centActive, setCentActive] = useState(true)
-    const [fahActive, setFahActive] = useState(false)
+    const [humidData, setHumidData] = useState(0)                            //humidity data
+    const [pressureData, setPressureData] = useState(0)                      //pressure data
+    const [visibData, setVisibData] = useState(0)                            // Visibility data
+    const [windData, setWindData] = useState(0)                 //wind data
+    const [windDirection, setWindDirection] = useState(0)       //wind direction
+    const [condition, setCondition] = useState('')              // condition text e.g cloudy
+    const [forecast, setForecast] = useState([])                 // hold new 5 days forecast data
+    const [longitude, setLongitude] = useState(51.8787)          // longitude
+    const [latitude, setLatitude] = useState(0.4200)             //latitude
+    const [visible, setVisible] = useState(false)               // handles search dropdown visibility
+    const [inputValue, setInputValue] = useState('')            // hold text input value
+    const [searchLoc, setSearchLoc] = useState(['Luton'])       //hold the value of the recent search value in search component
+    const [centActive, setCentActive] = useState(true)          // handles the style state from changing unit to centigrade                                                               // handles the style state from changing unit to fahrenheit
+    const [fahActive, setFahActive] = useState(false)            // handles the style state from changing unit to fahrenheit
 
 
 
@@ -99,7 +99,6 @@ const Container = () => {
                     try {
                         const response = await fetch(reverseGeocodingUrl);
                         const data1 = await response.json();
-                        console.log('data-open', data1)
                         if (data1.results && data1.results[0]) {
                             const city2 = data1.results[0]?.components?.city || data1.results[0]?.components?.county;
                             console.log('city2', city2)
@@ -161,10 +160,7 @@ const Container = () => {
                 setLongitude(res?.coord?.lon)
                 setLatitude((res?.coord?.lat))
 
-
-
             })
-            .then(res => console.log('data', data))
             .catch(error => console.error(error))
 
 
