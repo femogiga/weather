@@ -288,7 +288,7 @@ meter {
 .search-loc {
 
   position: relative;
-  border: 1px solid gray;
+  border: 1px solid transparent;
   padding: 1rem;
   width: 95%;
   text-align: start;
@@ -307,10 +307,11 @@ meter {
 .search-loc .claret {
   position: absolute;
   right: 0.75rem;
+  color: grey;
 }
 
 .search-loc:hover {
-  border: 1px solid var(--norm-blue);
+  border: 1px solid grey;
 }
 
 .close-cont {

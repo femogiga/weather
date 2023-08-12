@@ -31,8 +31,8 @@ const Container = () => {
     const [city, setCity] = useState('luton')
 
     const [currentTemp, setCurrentTemp] = useState(0)
-    const [minTemp, setMinTemp] = useState(0)
-    const [maxTemp, setMaxTemp] = useState(0)
+    // const [minTemp, setMinTemp] = useState(0)
+    // const [maxTemp, setMaxTemp] = useState(0)
     const [humidData, setHumidData] = useState(0)
     const [pressureData, setPressureData] = useState(0)
     const [visibData, setVisibData] = useState(0)
@@ -45,6 +45,8 @@ const Container = () => {
     const [visible, setVisible] = useState(false)
     const [inputValue, setInputValue] = useState('')
     const [searchLoc, setSearchLoc] = useState(['Luton'])
+    const [centActive, setCentActive] = useState(true)
+    const [fahActive, setFahActive] = useState(false)
 
 
 
@@ -82,7 +84,6 @@ const Container = () => {
         e.preventDefault()
     }
 
-    console.log('city=====>', city)
 
 
     const handleGeolocation = () => {
@@ -149,8 +150,8 @@ const Container = () => {
                 setData(res)
                 const loc = res?.main
                 setCurrentTemp(unitConverter(loc?.temp, unit))
-                setMinTemp(unitConverter(loc?.temp_min, unit))
-                setMaxTemp(unitConverter(loc?.max_temp, unit))
+                // setMinTemp(unitConverter(loc?.temp_min, unit))
+                // setMaxTemp(unitConverter(loc?.max_temp, unit))
                 setHumidData(loc?.humidity)
                 setPressureData(loc?.pressure)
                 setVisibData(res?.visibility)
@@ -181,15 +182,27 @@ const Container = () => {
         fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly,alerts&appid=${api_key}&cnt=40`)
             .then(res => res.json())
             .then(res => {
-                console.log('cityName', res)
                 setForecast(res.daily?.splice(1, 5))
                 // setCity(res?.name)
 
             })
-            .then(res => console.log('forecast', forecast))
+
             .catch(error => console.error(error))
 
     }, [longitude, latitude])
+
+    const unitStyle = {
+        backgroundColor: '#6E707A',
+        color: 'white'
+    }
+
+    const unitActiveStyle = {
+        backgroundColor: 'white',
+        color: 'black'
+    }
+
+
+
 
 
 
@@ -211,8 +224,8 @@ const Container = () => {
 
             <MidSection>
                 <Wrapper>
-                    <Unit unit={'°C'} key='C' onClick={() => { setUnit('C') }} />
-                    <Unit unit={'°F'} key='F' onClick={() => { setUnit('F') }} />
+                    <Unit unit={'°C'} key='C' onClick={() => { setUnit('C'); setCentActive(true); setFahActive(false) }} myStyle={centActive ? unitActiveStyle : unitStyle} />
+                    <Unit unit={'°F'} key='F' onClick={() => { setUnit('F'); setCentActive(false); setFahActive(true) }} myStyle={fahActive ? unitActiveStyle : unitStyle} />
                 </Wrapper>
 
                 <MidArticle >
