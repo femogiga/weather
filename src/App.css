@@ -233,14 +233,13 @@ meter {
 }
 
 .button-cont>button {
-  padding: .75rem;
+  padding: .92rem;
   color: white;
   background-color: var(--norm-blue);
-  border-color: var(--norm-blue);
   outline: none;
   width: 100%;
   min-width: 4.6rem;
-
+  border: none
 }
 
 .unit>button {
